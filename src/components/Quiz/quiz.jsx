@@ -2,7 +2,7 @@ import React from 'react'
 import { useState , useRef} from 'react';
 import { data } from '../../assets/data';
 import './quiz.css'
-const quiz = () => {
+const quiz = ({ theme }) => {
   let [index, setIndex] = useState(0);  //useState(0) is a hook
   let [question, setQuestion] = useState(data[index]);
   let [lock, setLock] = useState(false);
@@ -55,21 +55,132 @@ const quiz = () => {
     setLock(false);
     setResult(false); }
   return (
-    <div className='container' >
-      <h1>Quiz App</h1>
-      <hr />
-      {result?<></>:<> <h2>{index + 1}. {question.question}</h2>
-      <ul>
-        <li ref={Option1} onClick={(e) => { checkAns(e, 1) }}>{question.option1}</li>
-        <li ref={Option2}  onClick={(e) => { checkAns(e, 2) }}>{question.option2}</li>
-        <li ref={Option3}  onClick={(e) => { checkAns(e, 3) }}>{question.option3}</li>
-        <li ref={Option4}  onClick={(e) => { checkAns(e, 4) }}>{question.option4}</li>
+    <div
+  className={`container
+    ${theme.container}
+    w-full
+    max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl
+    mx-auto
+    sm:p-6 md:p-8
+    rounded-lg
+    shadow-lg
+   
+  `}
+>
+  <h1 className={`${theme.text} text-2xl sm:text-3xl font-bold text-center `}>
+    Quiz App
+  </h1>
+
+  <hr className={` border-2 ${theme.accent}`} />
+
+  {!result && (
+    <>
+      <h2 className={`${theme.text}  sm:text-xl font-semibold `}>
+        {index + 1}. {question.question}
+      </h2>
+
+      <ul >
+        <li
+          ref={Option1}
+          onClick={(e) => checkAns(e, 1)}
+           className=" transition  "
+        >
+          {question.option1}
+        </li>
+
+        <li
+          ref={Option2}
+          onClick={(e) => checkAns(e, 2)}
+           className=" transition  "
+        >
+          {question.option2}
+        </li>
+
+        <li
+          ref={Option3}
+          onClick={(e) => checkAns(e, 3)}
+           className="transition  "
+        >
+          {question.option3}
+        </li>
+
+        <li
+          ref={Option4}
+          onClick={(e) => checkAns(e, 4)}
+          className="transition  "
+        >
+          {question.option4}
+        </li>
       </ul>
-      <button onClick={next}>Next</button>
-      <div className='index'>{index+1} of {data.lenght} questions</div></>}
-      {result?<><h2>You Scored {score} out of {data.length}</h2>
-      <button onClick={reset}>Reset</button></>:<></>}
-    </div>
+
+      <button
+        onClick={next}
+        className={`
+          ${theme.primary}
+          w-full sm:w-auto
+          px-6 py-2
+          mt-6
+          text-sm sm:text-base
+          text-white
+          font-bold
+          rounded-md
+          hover:opacity-80
+          transition
+          center
+        `}
+      >
+        Next
+      </button>
+
+      <div className={`${theme.text} index  text-sm sm:text-base font-semibold text-center`}>
+        {index + 1} of {data.length} questions
+      </div>
+    </>
+  )}
+
+  {result && (
+    <>
+      <h2 className={`${theme.text} text-xl sm:text-2xl font-bold text-center mt-6`}>
+        You Scored {score} out of {data.length}
+      </h2>
+
+      <button
+        onClick={reset}
+        className={`
+          ${theme.primary}
+          w-full sm:w-auto
+          px-6 py-2
+          mt-6
+          text-sm sm:text-base
+          text-white
+          font-bold
+          rounded-md
+          hover:opacity-80
+          transition
+          
+        `}
+      >
+        Reset
+      </button>
+    </>
+  )}
+</div>
+
+    // <div className={`container ${theme.container} rounded-lg shadow-lg`} >
+    //   <h1 className={`${theme.text} text-3xl font-bold`}>Quiz App</h1>
+    //   <hr className={`border-2 ${theme.accent}`} />
+    //   {result?<></>:<> <h2 className={`${theme.text} text-xl font-semibold`}>{index + 1}. {question.question}</h2>
+    //   <ul>
+    //     <li ref={Option1} onClick={(e) => { checkAns(e, 1) }}>{question.option1}</li>
+    //     <li ref={Option2}  onClick={(e) => { checkAns(e, 2) }}>{question.option2}</li>
+    //     <li ref={Option3}  onClick={(e) => { checkAns(e, 3) }}>{question.option3}</li>
+    //     <li ref={Option4}  onClick={(e) => { checkAns(e, 4) }}>{question.option4}</li>
+    //   </ul>
+    //   <button onClick={next} className={`${theme.primary} text-white font-bold hover:opacity-80 transition`}>Next</button>
+    //   <div className={`index ${theme.text} font-semibold`}>{index+1} of {data.length} questions</div></>}
+    //   {result?<><h2 className={`${theme.text} text-2xl font-bold`}>You Scored {score} out of {data.length}</h2>
+    //   <button onClick={reset} className={`${theme.primary} text-white font-bold hover:opacity-80 transition`}>Reset</button></>:<></>}
+    // </div>
   ) 
 }
 export default quiz
