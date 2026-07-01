@@ -6,7 +6,7 @@ A small interactive React quiz application built with Vite.
 
 This project lets users answer multiple-choice quiz questions and track their score. It includes a theme selector so the interface can switch between different visual styles.
 ## Live Demo
-quiz-app-delta-five-96.vercel.app
+https://quiz-app-delta-five-96.vercel.app/
 
 ## Features
 
