@@ -1,15 +1,14 @@
 .container{
-    width: 640px;
-    height: 700px;
-    margin: auto;
-    margin-top: 60px;
-    margin-bottom: 60px;
+    width: min(100%, 520px);
+    max-width: 520px;
+    height: auto;
+    margin: 30px auto;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
     border-radius: 16px;
-    padding: 40px 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    padding: 28px 18px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
     transition: all 0.3s ease;
 }
 

@@ -85,7 +85,7 @@ const App = () => {
 
 
       
-      <div className="fixed top-4 left-4 flex gap-2 max-w-full sm:max-w-xs md:max-w-sm lg:max-w-md ">
+      <div className="fixed top-4 left-4 flex flex-col gap-2 max-w-full sm:max-w-xs md:max-w-sm lg:max-w-md ">
   {themeKeys.map((key) => (
     <button
       key={key}

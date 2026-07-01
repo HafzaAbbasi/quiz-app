@@ -166,21 +166,7 @@ const quiz = ({ theme }) => {
   )}
 </div>
 
-    // <div className={`container ${theme.container} rounded-lg shadow-lg`} >
-    //   <h1 className={`${theme.text} text-3xl font-bold`}>Quiz App</h1>
-    //   <hr className={`border-2 ${theme.accent}`} />
-    //   {result?<></>:<> <h2 className={`${theme.text} text-xl font-semibold`}>{index + 1}. {question.question}</h2>
-    //   <ul>
-    //     <li ref={Option1} onClick={(e) => { checkAns(e, 1) }}>{question.option1}</li>
-    //     <li ref={Option2}  onClick={(e) => { checkAns(e, 2) }}>{question.option2}</li>
-    //     <li ref={Option3}  onClick={(e) => { checkAns(e, 3) }}>{question.option3}</li>
-    //     <li ref={Option4}  onClick={(e) => { checkAns(e, 4) }}>{question.option4}</li>
-    //   </ul>
-    //   <button onClick={next} className={`${theme.primary} text-white font-bold hover:opacity-80 transition`}>Next</button>
-    //   <div className={`index ${theme.text} font-semibold`}>{index+1} of {data.length} questions</div></>}
-    //   {result?<><h2 className={`${theme.text} text-2xl font-bold`}>You Scored {score} out of {data.length}</h2>
-    //   <button onClick={reset} className={`${theme.primary} text-white font-bold hover:opacity-80 transition`}>Reset</button></>:<></>}
-    // </div>
+  
   ) 
 }
 export default quiz
