@@ -61,55 +61,69 @@ const App = () => {
   };
 
   return (
-    <div className={`${theme.bg} ${theme.text} min-h-screen border transition-colors duration-300`}>
-      <button
-  onClick={toggleTheme}
-  className={`
-    fixed 
-    top-4 sm:top-6 md:top-8 lg:top-10
-    right-4 sm:right-6 md:right-8 lg:right-10
-    px-2 sm:px-4 md:px-6 lg:px-8   /* smaller padding on small screens */
-    py-1.5 sm:py-3 md:py-4 lg:py-5  /* smaller height on small screens */
-    ${theme.primary}
-    rounded-lg
-    hover:opacity-80
-    transition-all duration-300 ease-in-out
-    font-semibold
-    text-xs sm:text-sm md:text-base lg:text-lg  /* smaller text on small screens */
-    z-50
-    border-2 border-black
-  `}
->
-  🎨 {theme.name}
-</button>
-
-
+    <div className={`${theme.bg} ${theme.text} min-h-screen border transition-colors duration-300 px-2 sm:px-4`}>
       
-      <div className="fixed top-4 left-4 flex flex-col gap-2 max-w-full sm:max-w-xs md:max-w-sm lg:max-w-md ">
-  {themeKeys.map((key) => (
-    <button
-      key={key}
-      onClick={() => setCurrentTheme(key)}
-      className={`
-        rounded 
-        transition-all duration-300 ease-in-out
-        text-xs sm:text-sm md:text-base lg:text-lg  /* responsive text size */
-        px-2 sm:px-3 md:px-4 lg:px-5           /* responsive horizontal padding */
-        py-1 sm:py-1.5 md:py-2 lg:py-2.5       /* responsive vertical padding */
-        font-semibold
-        ${currentTheme === key 
-          ? `${theme.primary} text-black border-2 border-black`
-          : 'bg-gray-500 text-white hover:bg-gray-600'
-        }
-      `}
-    >
-      {themes[key].name}
-    </button>
-  ))}
-</div>
+      {/* Theme Toggle Button (top-right) */}
+      <button
+        onClick={toggleTheme}
+        className={`
+          fixed
+          top-2 sm:top-6 md:top-8 lg:top-10
+          right-2 sm:right-6 md:right-8 lg:right-10
+          px-2 sm:px-4 md:px-6 lg:px-8
+          py-1 sm:py-3 md:py-4 lg:py-5
+          ${theme.primary}
+          rounded-lg
+          hover:opacity-80
+          transition-all duration-300 ease-in-out
+          font-semibold
+          text-[10px] sm:text-sm md:text-base lg:text-lg
+          z-50
+          border-2 border-black
+          whitespace-nowrap
+        `}
+      >
+        🎨 {theme.name}
+      </button>
 
+      {/* Theme Selector List (top-left) */}
+      <div
+        className="
+          fixed top-2 sm:top-4 left-2 sm:left-4
+          flex flex-row sm:flex-col
+          flex-wrap
+          gap-1 sm:gap-2
+          max-w-[70%] sm:max-w-xs md:max-w-sm lg:max-w-md
+          z-40
+        "
+      >
+        {themeKeys.map((key) => (
+          <button
+            key={key}
+            onClick={() => setCurrentTheme(key)}
+            className={`
+              rounded
+              transition-all duration-300 ease-in-out
+              text-[10px] sm:text-sm md:text-base lg:text-lg
+              px-1.5 sm:px-3 md:px-4 lg:px-5
+              py-0.5 sm:py-1.5 md:py-2 lg:py-2.5
+              font-semibold
+              whitespace-nowrap
+              ${currentTheme === key
+                ? `${theme.primary} text-black border-2 border-black`
+                : 'bg-gray-500 text-white hover:bg-gray-600'
+              }
+            `}
+          >
+            {themes[key].name}
+          </button>
+        ))}
+      </div>
 
-      <Quiz theme={theme} />
+      {/* Main Quiz Content - pushed down so fixed buttons don't overlap */}
+      <div className="pt-24 sm:pt-20 md:pt-16 flex justify-center items-start min-h-screen">
+        <Quiz theme={theme} />
+      </div>
     </div>
   )
 }
